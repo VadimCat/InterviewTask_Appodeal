@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
@@ -172,6 +173,12 @@ namespace AppodealAds.Unity.Dummy
         public string getVersion()
         {
             return Appodeal.APPODEAL_PLUGIN_VERSION;
+        }
+
+        public DateTime getBuildDate()
+        {
+            Debug.Log("Call to Appodeal.getBuildDate on not supported platform. To test advertising, install your application on the Android/iOS device.");
+            return new DateTime();
         }
 
         public long getSegmentId()
