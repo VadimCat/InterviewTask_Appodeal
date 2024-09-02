@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
 using AppodealAds.Unity.Api;
 using ConsentManager;
@@ -41,6 +42,7 @@ namespace AppodealAds.Unity.Common
         void muteVideosIfCallsMuted(bool value);
         void showTestScreen();
         string getVersion();
+        DateTime getBuildDate();
         bool canShow(int adTypes);
         bool canShow(int adTypes, string placement);
         void setCustomFilter(string name, bool value);

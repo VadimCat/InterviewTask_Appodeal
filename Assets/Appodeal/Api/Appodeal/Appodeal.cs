@@ -426,6 +426,10 @@ namespace AppodealAds.Unity.Api
             getInstance().trackInAppPurchase(amount, currency);
         }
 
+        public static DateTime getBuildDate()
+        {
+            return getInstance().getBuildDate();
+        }
         /// <summary>
         /// <para>
         /// Gets a list of available ad networks for certain ad type.

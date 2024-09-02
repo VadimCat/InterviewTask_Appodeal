@@ -385,6 +385,14 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("trackInAppPurchase", getActivity(), amount, currency);
         }
 
+        public DateTime getBuildDate()
+        {
+                AndroidJavaObject javaDate = getAppodealClass().CallStatic<AndroidJavaObject>("getBuildDate");
+                long timeInMillis = javaDate.Call<long>("getTime");
+                DateTime value = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                return value.AddMilliseconds(timeInMillis).ToLocalTime();
+        }
+        
         public List<string> getNetworks(int adTypes)
         {
             var networks = getAppodealClass().CallStatic<AndroidJavaObject>("getNetworks", nativeAdTypesForType(adTypes));
