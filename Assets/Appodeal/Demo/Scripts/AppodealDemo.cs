@@ -30,7 +30,9 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         [SerializeField] public Button btnShowRewardedVideo;
         [SerializeField] public GameObject consentManagerPanel;
         [SerializeField] public GameObject appodealPanel;
-
+        [SerializeField] public Text txtBuildDate;
+        [SerializeField] public Text txtSdkVersion;
+        [SerializeField] public Text txtPluginVersion;
         #endregion
 
         #region Application keys
@@ -61,6 +63,16 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
             consentManager = ConsentManager.getInstance();
             consentManager.setStorage(ConsentManager.Storage.SHARED_PREFERENCE);
+
+            txtPluginVersion.text = $"Plugin v. {Appodeal.APPODEAL_PLUGIN_VERSION}";
+            txtSdkVersion.text = $"SDK v.{Appodeal.getNativeSDKVersion()}";
+
+#if UNITY_ANDROID
+            txtBuildDate.text = $"Build date: {Appodeal.getBuildDate().ToShortDateString()}";
+            txtBuildDate.gameObject.SetActive(true);
+#else
+            txtBuildDate.gameObject.SetActive(false);
+#endif
         }
 
         private void OnDestroy()
