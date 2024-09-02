@@ -1,5 +1,6 @@
 ﻿#if UNITY_IPHONE
 using System.Runtime.InteropServices;
+using AppodealAds.Unity.Common;
 
 namespace AppodealAds.Unity.iOS
 {
@@ -192,6 +193,18 @@ namespace AppodealAds.Unity.iOS
 
         [DllImport("__Internal")]
         internal static extern void AppodealLogEvent(string eventName, string eventParams);
+
+        internal static void AppodealValidateInAppPurchase(
+            IAppStoreInAppPurchase purchase,
+            InAppPurchaseValidationSucceededCallback success,
+            InAppPurchaseValidationFailedCallback failure)
+        {
+            AppodealValidateInAppPurchase(purchase.getProductId(), purchase.getPrice(),
+                purchase.getCurrency(),
+                purchase.getTransactionId(), purchase.getAdditionalParameters(),
+                (int)purchase.getPurchaseType(), success,
+                failure);
+        }
 
         [DllImport("__Internal")]
         internal static extern void AppodealValidateInAppPurchase(
